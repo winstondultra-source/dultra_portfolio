@@ -1,16 +1,21 @@
+import Image from 'next/image';
+
 export default function Gallery() {
   const images = [
     {
       title: 'Digital Portrait Series',
       description: 'Abstract digital art exploration',
+      image: '/images/portrait.jpg',
     },
     {
       title: 'Animated Concepts',
       description: 'Motion graphics and animation work',
+      image: '/images/animation.jpg',
     },
     {
       title: 'VR Art Installation',
       description: 'Immersive virtual reality experience',
+      image: '/images/vr-art.jpg',
     },
   ];
 
@@ -32,12 +37,18 @@ export default function Gallery() {
                 {/* Frame Border */}
                 <div className="absolute inset-0 border-8 border-amber-900 pointer-events-none z-10 rounded-lg"></div>
                 
-                {/* Image Placeholder with Gradient */}
-                <div className="aspect-square bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 flex items-center justify-center relative">
-                  <div className="text-center">
-                    <div className="text-5xl mb-2">🎨</div>
-                    <p className="text-white font-semibold">{image.title}</p>
-                  </div>
+                {/* Image Container with Fallback */}
+                <div className="aspect-square relative bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={image.image}
+                    alt={image.title}
+                    fill
+                    className="object-cover"
+                    onError={(e) => {
+                      // Fallback: show gradient if image fails to load
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
                 </div>
               </div>
               
@@ -53,7 +64,7 @@ export default function Gallery() {
         {/* Note about image uploads */}
         <div className="mt-12 p-6 bg-gray-800 rounded-lg text-center">
           <p className="text-gray-300">
-            💡 <span className="italic">Ready to showcase your artwork? Replace the gradient placeholders with your actual digital art images by uploading them to the <code className="bg-gray-900 px-2 py-1 rounded">public/</code> folder and updating the image paths.</span>
+            💡 <span className="italic">Add more artwork by uploading images to <code className="bg-gray-900 px-2 py-1 rounded">public/images/</code></span>
           </p>
         </div>
       </div>
