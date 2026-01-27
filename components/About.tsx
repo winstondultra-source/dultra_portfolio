@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 export default function About() {
   return (
     <section className="py-20 bg-black text-white px-4">
@@ -11,17 +9,10 @@ export default function About() {
           <div className="flex justify-center">
             <div className="relative w-full max-w-md">
               <div className="rounded-lg overflow-hidden shadow-2xl border-4 border-purple-600 aspect-square bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 flex items-center justify-center overflow-hidden">
-                <Image
+                <img
                   src="/images/profile.jpg"
                   alt="Winston Dultra - Digital Artist"
-                  width={400}
-                  height={500}
                   className="w-full h-full object-cover"
-                  priority
-                  onError={(e) => {
-                    // If image fails to load, show placeholder
-                    e.currentTarget.style.display = 'none';
-                  }}
                 />
               </div>
             </div>
