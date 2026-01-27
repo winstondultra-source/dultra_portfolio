@@ -1,18 +1,28 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function About() {
   return (
     <section className="py-20 bg-black text-white px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Photo Placeholder */}
+          {/* Photo */}
           <div className="flex justify-center">
             <div className="relative w-full max-w-md">
-              <div className="rounded-lg overflow-hidden shadow-2xl border-4 border-purple-600 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 aspect-square flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">👤</div>
-                  <p className="text-white text-lg font-semibold">Winston Dultra</p>
-                </div>
+              <div className="rounded-lg overflow-hidden shadow-2xl border-4 border-purple-600 aspect-square bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-600 flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/images/profile.jpg"
+                  alt="Winston Dultra - Digital Artist"
+                  width={400}
+                  height={500}
+                  className="w-full h-full object-cover"
+                  priority
+                  onError={(e) => {
+                    // If image fails to load, show placeholder
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
               </div>
             </div>
           </div>
