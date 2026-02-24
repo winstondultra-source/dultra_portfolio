@@ -44,10 +44,6 @@ export default function Gallery() {
                     alt={image.title}
                     fill
                     className="object-cover"
-                    onError={(e) => {
-                      // Fallback: show gradient if image fails to load
-                      e.currentTarget.style.display = 'none';
-                    }}
                   />
                 </div>
               </div>
